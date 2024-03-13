@@ -12,17 +12,17 @@
         state: directory
         prefix: ansible-nssm
       register: nssm_temp_dir
-    
+
     - name: "Download NSSM"
       ansible.windows.win_get_url:
         url: "{{ nssm_zip_url }}"
         dest: "{{ nssm_temp_dir.path }}"
-  
+
     - name: "Unarchive NSSM"
       community.windows.win_unzip:
         src: "{{ nssm_temp_dir.path }}\\{{ nssm_pkg_name }}"
         dest: "{{ nssm_temp_dir.path }}"
-  
+
     - name: "Copy file to windows system32 directory"
       ansible.windows.win_copy:
         src: "{{ nssm_temp_dir.path }}\\nssm-{{ nssm_version }}\\win64\\nssm.exe"
