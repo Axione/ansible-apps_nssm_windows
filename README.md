@@ -22,7 +22,6 @@
 ## Description
 
 Install nssm on windows
-
 ## Requirements
 
 none
@@ -40,6 +39,7 @@ See [variables](/defaults/main.yml) for more details.
           gather_facts: true
           roles:
             - role: ansible-apps_nssm_windows
+
 
 ## License
 
