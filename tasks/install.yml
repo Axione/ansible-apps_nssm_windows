@@ -17,6 +17,10 @@
       ansible.windows.win_get_url:
         url: "{{ nssm_zip_url }}"
         dest: "{{ nssm_temp_dir.path }}"
+      register: __pkg_result
+      retries: 12
+      delay: 10
+      until: __pkg_result is success
 
     - name: "Unarchive NSSM"
       community.windows.win_unzip:
